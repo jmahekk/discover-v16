@@ -1,0 +1,29 @@
+# v15 Requirements (backend)
+# Install with: pip install -r requirements_v15.txt
+# The frontend has its own dependencies, installed with npm (see README).
+
+# NEW in v15: the web API that replaces the Streamlit app
+fastapi
+uvicorn[standard]
+python-dotenv      # loads secrets (DB password, Groq keys) from .env
+
+# Core pipeline (carried over from v14)
+pymysql            # MySQL connection
+pandas             # dataframes used by pipeline scripts
+groq               # Groq LLM API (answers + LLM fallback classification)
+numpy              # scoring math everywhere
+scikit-learn       # TF-IDF sentence scoring, KMeans
+
+# Retrieval
+rank-bm25          # BM25 coarse retrieval (Stage 1)
+fastembed          # ColBERT late-interaction re-ranking (Stage 2)
+
+# Embeddings (papers, categories and the user's question)
+sentence-transformers   # all-MiniLM-L6-v2, runs locally
+
+# Data pipeline (downloading / extraction, unchanged from v13/v14)
+openpyxl           # reading hyperlinked xlsx (read_urls.py)
+requests           # PDF downloader
+beautifulsoup4     # TEI-XML parsing in extract_core.py
+lxml               # XML parser backend
+PyMuPDF            # fitz, PDF footer extraction

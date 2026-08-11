@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bond: #f7f8f6;
+  --surface: #ffffff;
+  --ink: #1b2130;
+  --graphite: #5b6170;
+  --rule: #e4e6e1;
+  --ultra: #2b44b8;
+  --marker: #ffde59;
+  --marker-soft: rgba(255, 222, 89, 0.45);
+  --shadow: 0 1px 2px rgba(27, 33, 48, 0.05), 0 8px 24px rgba(27, 33, 48, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bond: #14171f;
+    --surface: #1b2029;
+    --ink: #e8eae6;
+    --graphite: #9aa0ae;
+    --rule: #2a2f3c;
+    --ultra: #8c9ef5;
+    --marker: #e4c63e;
+    --marker-soft: rgba(228, 198, 62, 0.28);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+}
+
+html {
+  background: var(--bond);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Archivo", "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--marker-soft);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ultra);
+  outline-offset: 2px;
+}
+
+.reading {
+  font-family: "STIX Two Text", Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 64ch;
+}
+.reading p {
+  margin: 0 0 0.9em;
+}
+
+.cite {
+  display: inline-block;
+  font-family: "IBM Plex Mono", Consolas, monospace;
+  font-size: 0.72rem;
+  color: var(--ultra);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  padding: 0 5px;
+  margin: 0 1px;
+  cursor: pointer;
+  vertical-align: 2px;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+.cite.lit {
+  background: var(--marker-soft);
+  border-color: var(--marker);
+}
+
+.evcard {
+  transition: background 0.22s ease, border-color 0.22s ease;
+}
+.evcard.lit {
+  background: var(--marker-soft);
+  border-color: var(--marker);
+}
+
+.caret::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--ultra);
+  margin-left: 2px;
+  vertical-align: -2px;
+  animation: blink 1s steps(2) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

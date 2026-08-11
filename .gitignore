@@ -1,0 +1,9 @@
+venv/
+frontend/node_modules/
+__pycache__/
+*.pyc
+colbert_doc_embeddings.npy
+ngrok.exe
+.env
+*.db
+*.sql
